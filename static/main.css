@@ -1,0 +1,78 @@
+/*
+ * Media Object
+ *
+ * Adapted from:
+ *   stubbornella.org/content/2010/06/25/the-media-object-saves-hundreds-of-lines-of-code/
+ *   facebook.com
+ */
+.media {
+    margin-bottom: 10px;
+}
+
+.media:before,
+.media:after {
+    content: "";
+    display: table;
+}
+
+.media:after {
+    clear: both;
+}
+
+/*
+ * Primary graphical component (e.g. img, svg, sprite)
+ */
+
+.media .img {
+    float: left;
+    margin: 0 10px 0 0;
+    padding: 3px;
+    -webkit-box-shadow: 0 0 3px 1px #ccc;
+    box-shadow: 0 0 3px 1px #ccc;
+}
+
+/*
+ * Optional graphical component
+ */
+
+.media .opt {
+    float: right;
+    margin: 0 0 0 10px;
+}
+
+/*
+ * 1. Remove excess space below images in .img block
+ * 2. Guard against `img {max-width:100%}` hiding all Media Object images in IE8
+ */
+
+.media .img img,
+.media .opt img {
+    display: block; /* 1 */
+    max-width: none; /* 2 */
+}
+
+/*
+ * Media object body
+ * 1. Create a new block formatting context (NBFC) in modern browsers
+ * 2. Avoid shrink-wrap behaviour of table-cell
+ *
+ * N.B. This breaks down in some browsers when images within .body exceed its
+ * width. The alternative is to use `overflow:hidden` to create the NBFC but
+ * this is problematic if the object contains elements absolutely positioned
+ * beyond the confines of its box.
+ */
+
+.media .body {
+    display: table-cell; /* 1 */
+    width: 10000px; /* 2 */
+    padding-bottom: 10px;
+}
+
+.media .body > h2 {
+  margin-bottom: 0;
+}
+
+.media-list .media {
+  padding-top: 10px;
+  border-top: 1px solid #e6e6e6;
+}

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Blobstore to GCS migration</title>
+	<link href="/static/main.css" rel="stylesheet" >
+</head>
+<body>
+	{% block body %}
+		<h1>Blobstore to GCS migration</h1>
+
+		<ol>
+			<li><a href="/upload">Upload</a> some images to Blobstore (for demo)</li>
+			<li>Run <a href="/mapreduce/">Migrate blobstore data to GCS</a> job</li>
+			<li>Run <a href="/mapreduce/">Cleanup migrated blobs</a> job</li>
+		</ol>
+	{% endblock %}
+</body>
+</html>

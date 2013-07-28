@@ -1,0 +1,16 @@
+mapreduce:
+- name: Migrate blobstore data to GCS
+  mapper:
+    input_reader: mapreduce.input_readers.DatastoreInputReader
+    handler: bs2gcs.migrate
+    params:
+    - name: entity_kind
+      default: main.Image
+
+- name: Cleanup migrated blobs
+  mapper:
+    input_reader: mapreduce.input_readers.DatastoreInputReader
+    handler: bs2gcs.cleanup
+    params:
+    - name: entity_kind
+      default: main.Image

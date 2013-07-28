@@ -1,0 +1,36 @@
+{% extends '_base.html' %}
+{% block body %}
+	<h1>Upload</h1>
+	<a href="/">&laquo; back</a>
+	<p>
+		<input type="file" id="input" multiple="true"
+		       data-upload-url="/get_upload_url">
+	</p>
+	<p>
+		<progress min="0" max="100" value="0" id="progress"></progress>
+	</p>
+
+	<h2>Existing images</h2>
+	<div id="list">
+		{% for img in images %}
+			<div class="media">
+				<div class="img">
+					<img src="{{img.url}}=s100-c">
+				</div>
+				<div class="body">
+					URL: <a href="{{img.url}}">{{img.url}}</a><br>
+					GCS key: {{img.gs_key}}<br>
+					Blob key: {{img.blob_key}}
+					<p>
+						Updated: {{img.updated}}
+					</p>
+				</div>
+			</div>
+		{% endfor %}
+	</div>
+
+	<script src="/static/uploader.js"></script>
+	<script>
+		Uploader.setup('#list', '#input', '#progress');
+	</script>
+{% endblock %}
